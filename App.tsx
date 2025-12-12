@@ -397,9 +397,10 @@ export default function App() {
             console.log(`Appointment saved:`, result);
           }
           console.log(`All ${results.length} appointments saved successfully`);
-        } catch (err) {
+        } catch (err: unknown) {
           console.error('Erro ao salvar no Supabase:', err);
-          alert(`Erro ao salvar agendamentos: ${err.message}`);
+          const message = err instanceof Error ? err.message : String(err);
+          alert(`Erro ao salvar agendamentos: ${message}`);
         }
       }
       setShowConfirmation(true);
@@ -453,7 +454,7 @@ export default function App() {
             <ImageWithFallback 
               src={logoImage} 
               alt="Gabriela Rolemberg - Manicure & Pedicure" 
-              className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4"
+              className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4 rounded-full object-cover"
             />
           </div>
 
@@ -520,7 +521,7 @@ export default function App() {
           <ImageWithFallback 
             src={logoImage} 
             alt="Gabriela Rolemberg - Manicure & Pedicure" 
-            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4"
+            className="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 mx-auto mb-3 sm:mb-4 rounded-full object-cover"
           />
         </div>
 
